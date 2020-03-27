@@ -4,7 +4,6 @@ if (process.env.NODE_ENV === 'development') {
 
 const express = require('express')
 const app = express()
-const port = Number(process.env.PORT)
 const cors = require('cors')
 
 const routes = require('./routes')
@@ -14,6 +13,4 @@ app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use(routes)
 
-app.listen(port, () => {
-  console.log('server running on port', port)
-})
+module.exports = app
