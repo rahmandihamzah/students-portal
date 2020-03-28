@@ -1,6 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  class User extends sequelize.Sequelize.Model {
+    static associate (models) {
+
+    }
+  }
+
+  User.init({
     memberTag: DataTypes.STRING,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
@@ -14,9 +20,9 @@ module.exports = (sequelize, DataTypes) => {
     GenerationId: DataTypes.INTEGER,
     RoleId: DataTypes.INTEGER,
     ShowreelId: DataTypes.STRING
-  }, {});
-  User.associate = function(models) {
-    // associations can be defined here
-  };
+  }, {
+    sequelize
+  })
+  
   return User;
 };

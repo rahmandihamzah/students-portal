@@ -1,10 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Department = sequelize.define('Department', {
+  class Department extends sequelize.Seqielize.Model {
+    static associate (models) {
+
+    }
+  }
+
+  Department.init({
     name: DataTypes.STRING
-  }, {});
-  Department.associate = function(models) {
-    // associations can be defined here
-  };
+  }, {
+    sequelize
+  })
+  
   return Department;
 };

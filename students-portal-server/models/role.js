@@ -1,10 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Role = sequelize.define('Role', {
+  class Role extends sequelize.Sequelize.Model {
+    static associate (models) {
+
+    }
+  }
+
+  Role.init({
     name: DataTypes.STRING
-  }, {});
-  Role.associate = function(models) {
-    // associations can be defined here
-  };
+  }, {
+    sequelize
+  })
+  
   return Role;
 };

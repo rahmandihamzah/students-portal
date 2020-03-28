@@ -1,13 +1,19 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Showreel = sequelize.define('Showreel', {
+  class Showreel extends sequelize.Sequelize.Model {
+    static associate (models) {
+
+    }
+  }
+
+  Showreel.init({
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     reel: DataTypes.STRING,
     tags: DataTypes.ARRAY
-  }, {});
-  Showreel.associate = function(models) {
-    // associations can be defined here
-  };
+  }, {
+    sequelize
+  })
+  
   return Showreel;
 };
