@@ -9,8 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   Showreel.init({
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    reel: DataTypes.STRING,
-    tags: DataTypes.ARRAY
+    reel: DataTypes.STRING
   }, {
     sequelize
   })

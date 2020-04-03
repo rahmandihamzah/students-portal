@@ -17,9 +17,6 @@ module.exports = {
       reel: {
         type: Sequelize.STRING
       },
-      tags: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

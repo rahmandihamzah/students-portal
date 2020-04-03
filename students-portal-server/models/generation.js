@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   Generation.init({
     name: DataTypes.STRING
   }, {
-    seqeulize
+    sequelize
   })
   
   return Generation;
