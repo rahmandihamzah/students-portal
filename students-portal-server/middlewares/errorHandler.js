@@ -1,4 +1,5 @@
 module.exports = (err, req, res, next) => {
+  console.log(err)
   let status = 500
   let errObj = {
     msg: 'internal server error'
@@ -31,7 +32,7 @@ module.exports = (err, req, res, next) => {
   {
     status = 400
     errObj = {
-      msg: 'Invalid email or password'
+      msg: 'Invalid email/username or password'
     }
   }
 
