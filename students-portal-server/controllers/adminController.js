@@ -1,9 +1,9 @@
-const { User } = require('../models')
+const { Admin } = require('../models')
 const { comparePassword } = require('../helpers/bcrypt')
 const { generateToken } = require('../helpers/jwt')
 
-class UserController {
-  static signUp(req, res, next) {
+class AdminController {
+  static signUp (req, res, next) {
     const {
       firstName,
       lastName,
@@ -13,50 +13,18 @@ class UserController {
       password
     } = req.body
 
-    let userId
-    User.findAll()
-      .then(response => {
-        userId = (response.length + 1).toString()
-        if (userId.length == 1)
-        {
-          userId = `000${userId}`
-        } else if (userId.length == 2)
-        {
-          userId = `00${userId}`
-        } else if (userId.length == 3)
-        {
-          userId = `0${userId}`
-        }
-        let date = new Date().getDate().toString()
-        if (date.length == 1) date = `0${date}`
-        let month = new Date().getMonth().toString()
-        if (month.length == 1) month = `0${month}`
-        let year = new Date().getFullYear().toString()
-        let initialYear = ''
-        for (let i = 0; i < year.length; i++)
-        {
-          if (i == year.length - 1 || i == year.length - 2)
-          {
-            initialYear += year[i]
-          }
-        }
-
-        const memberTagRegistered = `${userId}${date}${month}${initialYear}`
-
-        return User.create({
-          memberTag: memberTagRegistered,
-          firstName,
-          lastName,
-          userName,
-          email,
-          phoneNumber,
-          password,
-          RoleId: 2
-        })
-      })
+    Admin.create({
+      firstName,
+      lastName,
+      userName,
+      email,
+      phoneNumber,
+      password,
+      RoleId: 1
+    })
       .then(response => {
         res.status(201).json({
-          msg: 'Sign up complete',
+          msg: 'Sign an admin up complete',
           response
         })
       })
@@ -65,7 +33,7 @@ class UserController {
       })
   }
 
-  static signIn(req, res, next) {
+  static signIn (req, res, next) {
     const { userInput, password } = req.body
     let err = {
       name: ''
@@ -76,15 +44,17 @@ class UserController {
 
     if (isEmail)
     {
-      User.findOne({
+      Admin.findOne({
         where: {
           email: userInput
         }
       })
         .then(response => {
-          if (response) {
+          if (response)
+          {
             const isValid = comparePassword(password, response.password)
-            if (isValid) {
+            if (isValid)
+            {
               const payload = {
                 id: response.id,
                 email: response.email,
@@ -96,7 +66,8 @@ class UserController {
                 access_token
               })
             }
-          } else {
+          } else
+          {
             err.name = 'invalidInputSignIn'
             next(err)
           }
@@ -106,7 +77,7 @@ class UserController {
         })
     } else
     {
-      User.findOne({
+      Admin.findOne({
         where: {
           userName: userInput
         }
@@ -141,14 +112,4 @@ class UserController {
   }
 }
 
-module.exports = UserController
-
-// memberTag: DataTypes.STRING,
-// firstName: DataTypes.STRING,
-// lastName: DataTypes.STRING,
-// userName: DataTypes.STRING,
-// email: DataTypes.STRING,
-// phoneNumber: DataTypes.STRING,
-// password: DataTypes.STRING,
-// photo_url: DataTypes.STRING,
-// status: DataTypes.STRING,
+module.exports = AdminController
