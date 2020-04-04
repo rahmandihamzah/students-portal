@@ -17,6 +17,9 @@ module.exports = {
       reel: {
         type: Sequelize.STRING
       },
+      StudentId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

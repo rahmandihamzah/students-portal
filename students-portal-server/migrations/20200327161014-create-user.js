@@ -33,7 +33,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       status: {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM,
+        values: ["student", "graduate"]
       },
       DepartmentId: {
         type: Sequelize.INTEGER
@@ -43,9 +44,6 @@ module.exports = {
       },
       RoleId: {
         type: Sequelize.INTEGER
-      },
-      ShowreelId: {
-        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

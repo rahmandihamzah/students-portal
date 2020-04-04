@@ -1,12 +1,12 @@
 const express = require('express')
-const router = express.Router()
-const departmentRoutes = require('./departmentRoutes')
+const route = express.Router()
+const userRoutes = require('./userRoutes')
 
-router.get('/', (req, res) => {
+route.get('/', (req, res) => {
   console.log('ya')
   res.send('WELCOME')
 })
 
-router.use('/department', departmentRoutes)
+route.use('/user', userRoutes)
 
-module.exports = router
+module.exports = route
