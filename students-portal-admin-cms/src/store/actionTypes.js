@@ -7,3 +7,4 @@ export const SET_USERS = "SET_USERS"
 
 // set access_token
 export const SET_ACCESS_TOKEN = "SET_ACCESS_TOKEN"
+export const SET_LOGIN_STATUS = "SET_LOGIN_STATUS"

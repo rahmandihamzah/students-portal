@@ -1,13 +1,15 @@
 import {
   SET_LOADING,
   SET_ERROR,
-  SET_ACCESS_TOKEN
+  SET_ACCESS_TOKEN,
+  SET_LOGIN_STATUS
 } from '../actionTypes'
 
 const initialState = {
   loading: false,
   error: '',
-  access_token: ''
+  access_token: '',
+  loginStatus: false
 }
 
 function loginReducer (state = initialState, action) {
@@ -15,6 +17,13 @@ function loginReducer (state = initialState, action) {
     return {
       ...state,
       access_token: action.payload
+    }
+  }
+
+  if (action.type === SET_LOGIN_STATUS) {
+    return {
+      ...state,
+      loginStatus: action.payload
     }
   }
 
