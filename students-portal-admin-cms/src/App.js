@@ -6,8 +6,6 @@ import {
 } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
-// import logo from './logo.svg';
-import './App.css';
 
 // components
 import Auth from './components/auth/Auth'

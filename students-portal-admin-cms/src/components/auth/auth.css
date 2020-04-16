@@ -1,0 +1,22 @@
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+}
+
+.auth-area {
+  width: 30%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.ilustration-area {
+  width: 70%;
+  min-heght: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
