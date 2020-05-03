@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   class Showreel extends sequelize.Sequelize.Model {
-    static associate (models) {
+    static associate(models) {
 
     }
   }
@@ -13,6 +13,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize
   })
-  
+
   return Showreel;
 };

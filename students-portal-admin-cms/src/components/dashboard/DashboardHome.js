@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLoginStatus, setAccessToken } from '../../store/actionCreators/loginAction'
 
-function DashboardHome () {
+function DashboardHome() {
   const history = useHistory()
   const dispatch = useDispatch()
   const loginStatus = useSelector(state => state.loginReducer.loginStatus)
@@ -17,12 +17,12 @@ function DashboardHome () {
   useEffect(() => {
     if (localStorage.getItem('access_token')) dispatch(setLoginStatus(true))
     if (!loginStatus) history.push("/auth")
-  }, 
-  [
-    history, 
-    loginStatus, 
-    dispatch
-  ])
+  },
+    [
+      history,
+      loginStatus,
+      dispatch
+    ])
 
   return (
     <div>
