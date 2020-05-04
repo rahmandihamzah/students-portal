@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../../store/actionCreators/loginAction";
+import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { login } from "../../store/actionCreators/loginAction"
 
 function Login() {
-  const dispatch = useDispatch();
-  const [userInput, setUserInput] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch()
+  const [userInput, setUserInput] = useState("")
+  const [password, setPassword] = useState("")
 
   const handleLogin = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     dispatch(
       login({
         userInput,
         password,
       })
-    );
-  };
+    )
+  }
 
   return (
     <div className="w-full">
       <h4>Sign in</h4>
-      <div className="w-full">
+      <div>
         <form
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={(e) => handleLogin(e)}>
@@ -32,13 +32,13 @@ function Login() {
             </label>
             <input
               type="text"
-              className="shadow appearance-none border rounded w-full py-2 px-3 mb-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded md:w-full py-2 px-3 mb-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="email"
               id="email"
               aria-describedby="helpId"
               placeholder="email"
               onChange={(e) => {
-                setUserInput(e.target.value);
+                setUserInput(e.target.value)
               }}></input>
             {/* <small id="helpId" className="form-text text-muted">Help text</small> */}
           </div>
@@ -50,13 +50,13 @@ function Login() {
             </label>
             <input
               type="password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 mb-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded md:w-full py-2 px-3 mb-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="password"
               id="password"
               aria-describedby="helpId"
               placeholder="password"
               onChange={(e) => {
-                setPassword(e.target.value);
+                setPassword(e.target.value)
               }}></input>
             {/* <small id="helpId" className="form-text text-muted">Help text</small> */}
           </div>
@@ -71,7 +71,7 @@ function Login() {
         </form>
       </div>
     </div>
-  );
+  )
 }
 
-export default Login;
+export default Login
