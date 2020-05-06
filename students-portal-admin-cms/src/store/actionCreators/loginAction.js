@@ -2,39 +2,39 @@ import {
   SET_LOADING,
   SET_ERROR,
   SET_ACCESS_TOKEN,
-  SET_LOGIN_STATUS
+  SET_LOGIN_STATUS,
 } from '../actionTypes'
-import { studentsPortalApi } from '../../api/studentsProtalApi'
+import { studentsPortalApi } from '../../api/studentsPortalApi.js'
 
-export function setLoading (value) {
+export function setLoading(value) {
   return {
     type: SET_LOADING,
-    payload: value
+    payload: value,
   }
 }
 
-export function setError (value) {
+export function setError(value) {
   return {
     type: SET_ERROR,
-    payload: value
+    payload: value,
   }
 }
 
-export function setAccessToken (value) {
+export function setAccessToken(value) {
   return {
     type: SET_ACCESS_TOKEN,
-    payload: value
+    payload: value,
   }
 }
 
-export function setLoginStatus (value) {
+export function setLoginStatus(value) {
   return {
     type: SET_LOGIN_STATUS,
-    payload: value
+    payload: value,
   }
 }
 
-export function login (payload) {
+export function login(payload) {
   const { userInput, password } = payload
   return function (dispatch) {
     dispatch(setLoading(true))
@@ -43,18 +43,18 @@ export function login (payload) {
       url: '/admin/signIn',
       data: {
         userInput,
-        password
-      }
+        password,
+      },
     })
-      .then(({ data } )=> {
+      .then(({ data }) => {
         dispatch(setAccessToken(data.access_token))
         dispatch(setLoginStatus(true))
         localStorage.setItem('access_token', data.access_token)
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch(setError(err.response.data.msg))
       })
-      .finally(_ => {
+      .finally((_) => {
         dispatch(setLoading(false))
       })
   }

@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import { useDispatch } from "react-redux"
-import { login } from "../../store/actionCreators/loginAction"
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { login } from '../../store/actionCreators/loginAction'
 
-function Login() {
+function Login({ setIsLoginPage }) {
   const dispatch = useDispatch()
-  const [userInput, setUserInput] = useState("")
-  const [password, setPassword] = useState("")
+  const [userInput, setUserInput] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleLogin = (e) => {
     e.preventDefault()
@@ -15,6 +15,10 @@ function Login() {
         password,
       })
     )
+  }
+
+  const showRegister = () => {
+    setIsLoginPage(false)
   }
 
   return (
@@ -66,7 +70,9 @@ function Login() {
               type="submit">
               Sign in
             </button>
-            <p className="m-0">Create an account</p>
+            <p className="m-0" onClick={() => showRegister()}>
+              Create an account
+            </p>
           </div>
         </form>
       </div>
